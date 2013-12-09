@@ -8,6 +8,7 @@ gem 'therubyrhino'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'slim'
 
 group :doc do
   gem 'sdoc', require: false
