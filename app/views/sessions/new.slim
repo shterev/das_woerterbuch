@@ -1,5 +1,5 @@
 h1 Sign in
-= form_tag do
+= form_tag session_path do
   = email_field_tag :email
   = password_field_tag :password
   = submit_tag
