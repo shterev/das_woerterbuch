@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'slim'
+gem 'redirectr', '~> 0.0.8'
 
 group :doc do
   gem 'sdoc', require: false
