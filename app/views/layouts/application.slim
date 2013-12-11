@@ -13,7 +13,8 @@ html
       nav
         ul
           - if logged_in?
-            li email@here.com
+            li
+              = current_user.email
             li 
               = button_to('Sign out', session_path, :method => :delete)
           - else
