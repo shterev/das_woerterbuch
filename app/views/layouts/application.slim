@@ -9,7 +9,8 @@ html
     header
       nav
         ul
-          li Words
+          li
+            = link_to('Words', my_words_path)
       nav
         ul
           - if logged_in?
