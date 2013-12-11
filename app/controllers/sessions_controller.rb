@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:password])
       login(user)
-      redirect_to back_or_default(root_path), notice: 'Signed in!'
+      redirect_to back_or_default(my_root_path), notice: 'Signed in!'
     else
       flash.now[:error] = 'Invalid email or password'
       render 'new'

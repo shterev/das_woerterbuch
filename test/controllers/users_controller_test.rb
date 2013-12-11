@@ -16,7 +16,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should create user" do
     assert_difference('User.count') do
       post :create, user: { email: 'new.user@example.com', password: 'qweqwe', password_confirmation: 'qweqwe' }
-      assert_redirected_to new_user_path
+      assert_redirected_to my_root_path
       assert_response :redirect
       assert flash[:notice].present?
     end

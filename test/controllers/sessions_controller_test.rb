@@ -21,7 +21,7 @@ class SessionsControllerTest < ActionController::TestCase
   test "it logins a user" do
     post :create, { email:'simple.user@example.com', password: 'qweqwe' }
     assert_response :redirect
-    assert_redirected_to root_path
+    assert_redirected_to my_root_path
     assert flash[:notice].present?
   end
 
