@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      login(@user)
       redirect_to new_user_path, notice: 'User successfully created!'
     else
       flash.now[:error] = 'Please, fix the validation errors!'

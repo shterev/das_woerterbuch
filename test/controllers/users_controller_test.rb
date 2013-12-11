@@ -22,6 +22,11 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
+  test "user should get logged upon creation" do
+    post :create, user: { id: 666, email: 'new.user@example.com', password: 'qweqwe', password_confirmation: 'qweqwe' }
+    assert session[:current_user_id].present?
+  end
+
   # POST /users/create
   test "should render user new action" do
     post :create, user: { email: 'invalid' }
