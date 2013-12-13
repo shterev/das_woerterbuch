@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  # Validations
   validates :email,
               :presence   => true,
               :uniqueness => true,
@@ -17,4 +18,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation,
               :presence => true,
               :on       => :create
+
+  # Associations
+  has_many :words
+
 end

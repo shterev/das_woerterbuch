@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20131209162432) do
     t.string   "known_form"
     t.string   "type"
     t.string   "specifics"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

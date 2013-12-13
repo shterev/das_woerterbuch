@@ -2,6 +2,8 @@ class Word < ActiveRecord::Base
 
   serialize :specifics, Hash
 
+  belongs_to :user
+
   def adjective?
     false
   end

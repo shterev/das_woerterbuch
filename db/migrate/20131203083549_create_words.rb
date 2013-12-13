@@ -7,6 +7,8 @@ class CreateWords < ActiveRecord::Migration
       t.string :type
       t.string :specifics
 
+      t.integer :user_id
+
       t.timestamps
     end
   end
