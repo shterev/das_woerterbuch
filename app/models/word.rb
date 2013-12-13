@@ -2,7 +2,12 @@ class Word < ActiveRecord::Base
 
   serialize :specifics, Hash
 
+  # Associations
   belongs_to :user
+
+  # Validations
+  validates :foreign_form, presence: true, uniqueness: true
+  validates :known_form,   presence: true
 
   def adjective?
     false

@@ -14,8 +14,20 @@ class My::WordsControllerTest < ActionController::TestCase
 
   test "should redirect to login page if not logged in" do
     get :index
-    assert_response :redirect
     assert_redirected_to new_session_path(referrer: my_words_path)
+  end
+
+  test "renders the new page" do
+    login_as(@user)
+    get :new
+    assert_response :success
+  end
+
+  test "create new word" do
+    login_as(@user)
+    post :create, { word: { known_form: 'man', foreign_form: 'Mann', type: 'Noun', user_id: @user.id } }
+    assert_redirected_to my_words_path
+    assert flash[:notice].present?
   end
 
 end
