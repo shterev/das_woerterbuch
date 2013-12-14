@@ -41,4 +41,20 @@ class Word < ActiveRecord::Base
     false
   end
 
+  def self.specifics
+    @specifics
+  end
+
+  def self.define_specifics(*specifics)
+    @specifics = specifics
+
+    specifics.each do |specific|
+      define_method(specific) do
+        self.specifics[:specific]
+      end
+      define_method("#{specific}=") do |value|
+        self.specifics[:specific] = value
+      end
+    end
+  end
 end
