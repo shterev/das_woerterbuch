@@ -5,7 +5,7 @@ class My::WordsController < My::CommonController
   end
 
   def show
-    @word = current_user.words.find(params[:id])
+    @word = user_word_from_param
   end
 
   def new
@@ -25,11 +25,11 @@ class My::WordsController < My::CommonController
   end
 
   def edit
-    @word = current_user.words.find(params[:id])
+    @word = user_word_from_param
   end
 
   def update
-    @word = current_user.words.find(params[:id])
+    @word = user_word_from_param
 
     if @word.update_attributes(word_params)
       redirect_to back_or_default(my_words_path), notice: 'The word was successfully updated.'
@@ -40,6 +40,10 @@ class My::WordsController < My::CommonController
   end
 
   private
+
+  def user_word_from_param
+    current_user.words.find(params[:id])
+  end
 
   def word_params
     params.require(:word).permit(:foreign_form, :known_form, :type, :specifics)
