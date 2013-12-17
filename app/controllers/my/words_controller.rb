@@ -20,6 +20,10 @@ class My::WordsController < My::CommonController
 
   end
 
+  def edit
+    @word = current_user.words.find(params[:id])
+  end
+
   private
 
   def word_params

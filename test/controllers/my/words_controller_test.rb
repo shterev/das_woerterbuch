@@ -4,6 +4,10 @@ class My::WordsControllerTest < ActionController::TestCase
 
   def setup
     @user = users(:simple_user)
+    @word = words(:noun)
+
+    @user.words << @word
+    @user.save!
   end
 
   test "renders the index page" do
@@ -28,6 +32,12 @@ class My::WordsControllerTest < ActionController::TestCase
     post :create, { word: { known_form: 'man', foreign_form: 'Mann', type: 'Noun', user_id: @user.id } }
     assert_redirected_to my_words_path
     assert flash[:notice].present?
+  end
+
+  test "renders edit page" do
+    login_as(@user)
+    get :edit, { id: @word.id }
+    assert_response :success
   end
 
 end

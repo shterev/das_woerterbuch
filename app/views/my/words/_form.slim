@@ -1,4 +1,7 @@
-= form_for [:my, word] do |f|
+= form_for [:my, word], url: url do |f|
   = f.text_field :foreign_form, placeholder: 'Foreign form'
   = f.text_field :known_form, placeholder: 'Known form'
   = f.submit
+
+- if params[referrer_param].present?
+  = link_to 'Cancel', referrer_path
