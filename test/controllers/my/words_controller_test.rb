@@ -27,6 +27,12 @@ class My::WordsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "renders show" do
+    login_as(@user)
+    get :show, { id: @word.id }
+    assert_response :success
+  end
+
   test "create new word" do
     login_as(@user)
     post :create, { word: { known_form: 'man', foreign_form: 'Mann', type: 'Noun', user_id: @user.id } }

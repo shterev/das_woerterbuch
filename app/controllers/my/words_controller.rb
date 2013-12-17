@@ -4,6 +4,10 @@ class My::WordsController < My::CommonController
     @words = current_user.words.order(:foreign_form)
   end
 
+  def show
+    @word = current_user.words.find(params[:id])
+  end
+
   def new
     @word = Word.new(type: params[:type])
   end
