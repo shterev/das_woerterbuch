@@ -40,4 +40,11 @@ class My::WordsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "updates a word" do
+    login_as(@user)
+    patch :update, { id: @word.id, word: { known_form: 'new_known_form', foreign_form: 'new_foreign_form' } }
+    assert flash[:notice].present?
+    assert_redirected_to my_words_path
+  end
+
 end

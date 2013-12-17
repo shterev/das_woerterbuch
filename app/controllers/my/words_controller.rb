@@ -24,6 +24,17 @@ class My::WordsController < My::CommonController
     @word = current_user.words.find(params[:id])
   end
 
+  def update
+    @word = current_user.words.find(params[:id])
+
+    if @word.update_attributes(word_params)
+      redirect_to back_or_default(my_words_path), notice: 'The word was successfully updated.'
+    else
+      flash.now[:error] = 'The word was not updated successfully.'
+      render :edit
+    end
+  end
+
   private
 
   def word_params
