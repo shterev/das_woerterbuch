@@ -50,10 +50,10 @@ class Word < ActiveRecord::Base
 
     specifics.each do |specific|
       define_method(specific) do
-        self.specifics[:specific]
+        self.specifics[specific]
       end
       define_method("#{specific}=") do |value|
-        self.specifics[:specific] = value
+        self.specifics[specific] = value
       end
     end
   end
