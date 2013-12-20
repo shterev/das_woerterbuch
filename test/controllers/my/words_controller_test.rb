@@ -5,6 +5,7 @@ class My::WordsControllerTest < ActionController::TestCase
   def setup
     @user = users(:simple_user)
     @word = words(:noun)
+    @other_user_word = Verb.create(foreign_form: 'loeshen', known_form: 'delete')
 
     @user.words << @word
     @user.save!
@@ -35,7 +36,9 @@ class My::WordsControllerTest < ActionController::TestCase
 
   test "create new word" do
     login_as(@user)
-    post :create, { word: { known_form: 'man', foreign_form: 'Mann', type: 'Noun', user_id: @user.id } }
+    assert_difference('Word.count', 1) do
+      post :create, { word: { known_form: 'man', foreign_form: 'Mann', type: 'Noun', user_id: @user.id } }
+    end
     assert_redirected_to my_words_path
     assert flash[:notice].present?
   end
@@ -51,6 +54,26 @@ class My::WordsControllerTest < ActionController::TestCase
     patch :update, { id: @word.id, word: { known_form: 'new_known_form', foreign_form: 'new_foreign_form' } }
     assert flash[:notice].present?
     assert_redirected_to my_words_path
+  end
+
+  test "destroys a word" do
+    login_as(@user)
+
+    assert_difference('Word.count', -1) do
+      delete :destroy, { id: @word.id }
+    end
+
+    assert flash[:notice].present?
+    assert_redirected_to my_words_path
+  end
+
+  test "doesn't destroy a word if it doesn't belong to a user" do
+    login_as(@user)
+
+    assert_raises(ActiveRecord::RecordNotFound) do
+      delete :destroy, { id: @other_user_word.id }
+    end
+
   end
 
 end

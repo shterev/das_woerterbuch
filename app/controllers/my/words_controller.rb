@@ -39,6 +39,18 @@ class My::WordsController < My::CommonController
     end
   end
 
+  def destroy
+    @word = user_word_from_param
+
+    if @word.destroy
+      flash[:notice] = 'The word was deleted successfully.'
+    else
+      flash[:error] = 'The word was not deleted successfully.'
+    end
+
+    redirect_to back_or_default(my_words_path)
+  end
+
   private
 
   def user_word_from_param
