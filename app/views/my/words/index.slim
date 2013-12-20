@@ -8,6 +8,6 @@ nav
 ul
   - @words.each do |word|
     li
-      = word.inspect
+      = link_to word.foreign_form, my_word_path(word, referrer_param => current_path)
       = link_to 'Edit', edit_my_word_path(word, referrer_param => current_path)
       = button_to 'Delete', my_word_path(word, referrer_param => current_path), method: :delete, data: { confirm: "Are you sure?" }
