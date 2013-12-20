@@ -6,4 +6,4 @@
   = f.submit
 
 - if params[referrer_param].present?
-  = link_to 'Cancel', referrer_path
+  = link_to 'Cancel', back_or_default(my_words_path)
