@@ -24,8 +24,16 @@ class My::WordsControllerTest < ActionController::TestCase
 
   test "renders the new page" do
     login_as(@user)
-    get :new
+    get :new, type: @word.class
     assert_response :success
+  end
+
+  test "redirect to the words index if no word type specified" do
+    skip
+  end
+
+  test "redirect to the words index if word type doesn't exist" do
+    skip
   end
 
   test "renders show" do
