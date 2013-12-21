@@ -52,7 +52,7 @@ class Word < ActiveRecord::Base
   end
 
   def self.specifics
-    @specifics
+    @specifics || []
   end
 
   def self.define_specifics(*specifics)

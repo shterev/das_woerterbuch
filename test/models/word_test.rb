@@ -5,6 +5,9 @@ class WordInheritor < Word
   define_specifics :test_method_2, :test_method_3
 end
 
+class WordInheritorWoSpecifics < Word
+end
+
 class WordTest < ActiveSupport::TestCase
 
   test "that the default specifics value is an empty hash" do
@@ -15,6 +18,10 @@ class WordTest < ActiveSupport::TestCase
     assert WordInheritor.new.respond_to?(:test_method_1)
     assert WordInheritor.new.respond_to?(:test_method_2)
     assert WordInheritor.new.respond_to?(:test_method_3)
+  end
+
+  test "specifics should be empty array if no defined" do
+    assert WordInheritorWoSpecifics.specifics == []
   end
 
   test "specifics setter and getter methods" do
