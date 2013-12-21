@@ -41,6 +41,16 @@ class Word < ActiveRecord::Base
     false
   end
 
+  def self.inherited(subclass)
+    super(subclass)
+    @inheritors ||= []
+    @inheritors << subclass
+  end
+
+  def self.inheritors
+    @inheritors
+  end
+
   def self.specifics
     @specifics
   end

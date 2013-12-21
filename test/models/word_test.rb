@@ -27,4 +27,8 @@ class WordTest < ActiveSupport::TestCase
     end
   end
 
+  test "has list of the defined inheritor classes" do
+    assert Word.inheritors.include? WordInheritor
+  end
+
 end
