@@ -29,11 +29,15 @@ class My::WordsControllerTest < ActionController::TestCase
   end
 
   test "redirect to the words index if no word type specified" do
-    skip
+    login_as(@user)
+    get :new
+    assert_redirected_to my_words_path
   end
 
   test "redirect to the words index if word type doesn't exist" do
-    skip
+    login_as(@user)
+    get :new, type: 'NonExistingWord'
+    assert_redirected_to my_words_path
   end
 
   test "renders show" do
@@ -45,7 +49,7 @@ class My::WordsControllerTest < ActionController::TestCase
   test "create new word" do
     login_as(@user)
     assert_difference('Word.count', 1) do
-      post :create, { word: { known_form: 'man', foreign_form: 'Mann', type: 'Noun', user_id: @user.id } }
+      post :create, { type: @word.class.name, word: { known_form: 'man', foreign_form: 'Mann', user_id: @user.id } }
     end
     assert_redirected_to my_words_path
     assert flash[:notice].present?

@@ -1,5 +1,7 @@
 class My::WordsController < My::CommonController
 
+  before_action :redirect_on_invalid_word_type, only: [:new, :create]
+
   def index
     @words = current_user.words.order(:foreign_form)
   end
@@ -59,6 +61,12 @@ class My::WordsController < My::CommonController
 
   def word_params
     params.require(:word).permit(:foreign_form, :known_form, :type, :specifics)
+  end
+
+  def redirect_on_invalid_word_type
+    if params[:type].nil? || !Word.inheritors.include?(params[:type])
+      redirect_to my_words_path and return
+    end
   end
 
 end

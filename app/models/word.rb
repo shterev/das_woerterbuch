@@ -44,7 +44,7 @@ class Word < ActiveRecord::Base
   def self.inherited(subclass)
     super(subclass)
     @inheritors ||= []
-    @inheritors << subclass
+    @inheritors << subclass.name
   end
 
   def self.inheritors
