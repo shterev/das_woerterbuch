@@ -3,7 +3,13 @@ h1 Words
 nav
   ul
     li
-      = link_to('New word', new_my_word_path(referrer_param => current_path))
+      = link_to('All', my_words_path)
+    - Word.inheritors.each do |word_type|
+      li
+        = link_to(word_type, my_words_path(type: word_type))
+
+- if params[:type].present?
+  = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path))
 
 ul
   - @words.each do |word|

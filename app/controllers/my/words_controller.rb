@@ -1,9 +1,11 @@
 class My::WordsController < My::CommonController
 
+  before_action :redirect_on_missing_word_type, only: [:new, :create]
   before_action :redirect_on_invalid_word_type, only: [:new, :create]
 
   def index
     @words = current_user.words.order(:foreign_form)
+    @words = @words.where(type: params[:type]) if params[:type].present?
   end
 
   def show
@@ -11,11 +13,11 @@ class My::WordsController < My::CommonController
   end
 
   def new
-    @word = Word.new(type: params[:type])
+    @word = Word.new
   end
 
   def create
-    @word = Word.new(word_params)
+    @word = Word.new(word_params.merge(type: params[:type]))
 
     if @word.save
       current_user.words << @word
@@ -23,7 +25,6 @@ class My::WordsController < My::CommonController
     else
       redirect_to my_words_path, alert: 'Word not created successfully.'
     end
-
   end
 
   def edit
@@ -64,9 +65,11 @@ class My::WordsController < My::CommonController
   end
 
   def redirect_on_invalid_word_type
-    if params[:type].nil? || !Word.inheritors.include?(params[:type])
-      redirect_to my_words_path and return
-    end
+    redirect_to my_words_path and return unless Word.inheritors.include?(params[:type])
+  end
+
+  def redirect_on_missing_word_type
+    redirect_to my_words_path and return if params[:type].nil?
   end
 
 end

@@ -1,6 +1,7 @@
 = form_for [:my, word], url: url do |f|
   = hidden_referrer_input_tag
 
+  = hidden_field_tag :type, params[:type]
   = f.text_field :foreign_form, placeholder: 'Foreign form'
   = f.text_field :known_form, placeholder: 'Known form'
   = f.submit
