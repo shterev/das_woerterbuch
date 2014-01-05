@@ -17,6 +17,28 @@ class My::WordsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "render correct word types" do
+    login_as(@user)
+
+    # Create some words
+    @user.words << Verb.create(foreign_form: 'verb1', known_form: 'verb1')
+    @user.words << Verb.create(foreign_form: 'verb2', known_form: 'verb2')
+
+    # Check word inventory
+    assert @user.words.count == 3
+    assert @user.words.where(type: 'Verb').count == 2
+    assert @user.words.where(type: 'Noun').count == 1
+
+    get :index, type: 'Noun'
+    assert assigns(:words).count == 1
+
+    get :index, type: 'Verb'
+    assert assigns(:words).count == 2
+
+    get :index, type: 'Adverb'
+    assert assigns(:words).count == 0
+  end
+
   test "should redirect to login page if not logged in" do
     get :index
     assert_redirected_to new_session_path(referrer: my_words_path)
