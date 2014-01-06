@@ -15,8 +15,7 @@ class WordOperationsTest < ActionDispatch::IntegrationTest
   end
 
   test 'create word from each type' do
-    word_types = Word.inheritors.reject { |word_type| ['WordInheritor', 'WordInheritorWoSpecifics'].include?(word_type) }
-    word_types.each do |word_type|
+    Word.inheritors.each do |word_type|
       click_link(word_type)
       assert_page_with_title('Words')
 
@@ -30,6 +29,9 @@ class WordOperationsTest < ActionDispatch::IntegrationTest
       assert_page_with_title('Words')
       assert_notice_message('Word successfully created.')
     end
+  end
+
+  test 'cancel word creation' do
   end
 
   test 'edit word' do
