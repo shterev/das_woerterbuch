@@ -1,6 +1,9 @@
 <% password_digest = User.new(:password => 'qweqwe', :password_confirmation => 'qweqwe').password_digest %>
 
 simple_user:
-  id: 1
   email: simple.user@example.com
+  password_digest: <%= password_digest %>
+
+user_with_word:
+  email: user.with.word@example.com
   password_digest: <%= password_digest %>

@@ -4,10 +4,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   fixtures :users
 
-  setup do
-    Capybara.reset!
-  end
-
   test 'register new user' do
     visit(root_path)
     assert_page_with_title('Landing page')
@@ -19,6 +15,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     fill_in('user_password_confirmation', with: 'qweqwe')
     click_button('Register')
 
+    assert_notice_message('User successfully created!')
     assert_page_with_title('Words')
   end
 
@@ -28,11 +25,17 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
     click_link('Sign in')
     assert_page_with_title('Sign in')
-    fill_in('email', with: 'simple.user@example.com')
-    fill_in('password', with: 'qweqwe')
-    click_button('Login')
+    login!(users(:simple_user).email)
 
     assert_page_with_title('Words')
+  end
+
+  test 'logout a user' do
+    login!(users(:simple_user).email)
+    click_button('Sign out')
+
+    assert_notice_message('Signed out!')
+    assert_page_with_title('Sign in')
   end
 
 end

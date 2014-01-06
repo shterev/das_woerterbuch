@@ -4,11 +4,9 @@ class My::WordsControllerTest < ActionController::TestCase
 
   def setup
     @user = users(:simple_user)
+    @user_with_word = users(:user_with_word)
     @word = words(:noun)
-    @other_user_word = Verb.create(foreign_form: 'loeshen', known_form: 'delete')
-
-    @user.words << @word
-    @user.save!
+    @user_word = words(:user_word)
   end
 
   test "renders the index page" do
@@ -18,25 +16,19 @@ class My::WordsControllerTest < ActionController::TestCase
   end
 
   test "render correct word types" do
-    login_as(@user)
+    login_as(@user_with_word)
 
-    # Create some words
-    @user.words << Verb.create(foreign_form: 'verb1', known_form: 'verb1')
-    @user.words << Verb.create(foreign_form: 'verb2', known_form: 'verb2')
+    # Create some additional words
+    @user_with_word.words << Noun.create(foreign_form: 'noun1', known_form: 'noun1')
+    @user_with_word.words << Noun.create(foreign_form: 'noun2', known_form: 'noun2')
 
     # Check word inventory
-    assert @user.words.count == 3
-    assert @user.words.where(type: 'Verb').count == 2
-    assert @user.words.where(type: 'Noun').count == 1
-
-    get :index, type: 'Noun'
-    assert assigns(:words).count == 1
-
-    get :index, type: 'Verb'
-    assert assigns(:words).count == 2
-
-    get :index, type: 'Adverb'
-    assert assigns(:words).count == 0
+    Word.inheritors.each do |word_type|
+      get :index, type: word_type
+      expect = @user_with_word.words.where(type: word_type).count
+      have = assigns(:words).count
+      assert have == expect, "Expected to receive #{expect} #{word_type}s, but it got #{have}."
+    end
   end
 
   test "should redirect to login page if not logged in" do
@@ -46,7 +38,7 @@ class My::WordsControllerTest < ActionController::TestCase
 
   test "renders the new page" do
     login_as(@user)
-    get :new, type: @word.class
+    get :new, type: 'Noun'
     assert_response :success
   end
 
@@ -63,38 +55,38 @@ class My::WordsControllerTest < ActionController::TestCase
   end
 
   test "renders show" do
-    login_as(@user)
-    get :show, { id: @word.id }
+    login_as(@user_with_word)
+    get :show, { id: @user_word.id }
     assert_response :success
   end
 
   test "create new word" do
     login_as(@user)
     assert_difference('Word.count', 1) do
-      post :create, { type: @word.class.name, word: { known_form: 'man', foreign_form: 'Mann', user_id: @user.id } }
+      post :create, { type: 'Noun', word: { known_form: 'man', foreign_form: 'Mann', user_id: @user.id } }
     end
     assert_redirected_to my_words_path
     assert flash[:notice].present?
   end
 
   test "renders edit page" do
-    login_as(@user)
-    get :edit, { id: @word.id }
+    login_as(@user_with_word)
+    get :edit, { id: @user_word.id }
     assert_response :success
   end
 
   test "updates a word" do
-    login_as(@user)
-    patch :update, { id: @word.id, word: { known_form: 'new_known_form', foreign_form: 'new_foreign_form' } }
+    login_as(@user_with_word)
+    patch :update, { id: @user_word.id, word: { known_form: 'new_known_form', foreign_form: 'new_foreign_form' } }
     assert flash[:notice].present?
     assert_redirected_to my_words_path
   end
 
   test "destroys a word" do
-    login_as(@user)
+    login_as(@user_with_word)
 
     assert_difference('Word.count', -1) do
-      delete :destroy, { id: @word.id }
+      delete :destroy, { id: @user_word.id }
     end
 
     assert flash[:notice].present?
@@ -102,10 +94,10 @@ class My::WordsControllerTest < ActionController::TestCase
   end
 
   test "doesn't destroy a word if it doesn't belong to a user" do
-    login_as(@user)
+    login_as(@user_with_word)
 
     assert_raises(ActiveRecord::RecordNotFound) do
-      delete :destroy, { id: @other_user_word.id }
+      delete :destroy, { id: @word.id }
     end
 
   end

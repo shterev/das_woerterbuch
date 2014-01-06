@@ -1,6 +1,12 @@
 noun:
-  id: 1
-  foreign_form: B
-  known_form: A
+  foreign_form: foreign_form
+  known_form: known_form
   type: Noun
   specifics: {}
+
+user_word:
+  foreign_form: verb_foreign_form
+  known_form: verb_known_form
+  type: Verb
+  specifics: {}
+  user: user_with_word
