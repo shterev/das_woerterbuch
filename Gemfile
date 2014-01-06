@@ -18,3 +18,7 @@ end
 group :assets do
   gem 'coffee-rails'
 end
+
+group :development, :test do
+  gem 'capybara'
+end

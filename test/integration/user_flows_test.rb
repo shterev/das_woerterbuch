@@ -4,13 +4,17 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   fixtures :users
 
-  test 'login flow' do
-    get new_session_path
-    assert_response :success
+  test 'login simple user' do
+    visit(root_path)
+    assert_page_with_title('Landing page')
 
-    post_via_redirect session_path, email: users(:simple_user).email, password: 'qweqwe'
-    assert_equal my_root_path, path
-    assert flash[:notice].present?
+    click_link('Sign in')
+    assert_page_with_title('Sign in')
+    fill_in('email', with: 'simple.user@example.com')
+    fill_in('password', with: 'qweqwe')
+    click_button('Save changes')
+
+    assert_page_with_title('Words')
   end
 
 end
