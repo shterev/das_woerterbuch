@@ -69,6 +69,16 @@ class My::WordsControllerTest < ActionController::TestCase
     assert flash[:notice].present?
   end
 
+  test "validation error on creating new word" do
+    login_as(@user)
+    assert_difference('Word.count', 0) do
+      post :create, { type: 'Noun', word: { known_form: '', foreign_form: '' } }
+    end
+    assert_response :success
+    assert_template 'new'
+    assert flash[:error].present?
+  end
+
   test "renders edit page" do
     login_as(@user_with_word)
     get :edit, { id: @user_word.id }
@@ -82,12 +92,29 @@ class My::WordsControllerTest < ActionController::TestCase
     assert_redirected_to my_words_path
   end
 
+  test "validation error on updating a word" do
+    login_as(@user_with_word)
+    patch :update, { id: @user_word.id, word: { known_form: '', foreign_form: '' } }
+    assert_response :success
+    assert_template 'edit'
+    assert flash[:error].present?
+  end
+
   test "destroys a word" do
     login_as(@user_with_word)
 
     assert_difference('Word.count', -1) do
       delete :destroy, { id: @user_word.id }
     end
+
+    assert flash[:notice].present?
+    assert_redirected_to my_words_path
+  end
+
+  test "validation error on destroing a word" do
+    login_as(@user_with_word)
+
+    delete :destroy, { id: @user_word.id }
 
     assert flash[:notice].present?
     assert_redirected_to my_words_path

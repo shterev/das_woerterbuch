@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   def require_no_login
     if logged_in?
       flash[:error] = "You cannot do this when signed in."
-      redirect_to my_profile_path
+      redirect_to my_root_path
     end
   end
 end

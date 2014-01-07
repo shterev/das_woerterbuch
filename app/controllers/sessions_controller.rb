@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_email(params[:email])
-    
+
     if user && user.authenticate(params[:password])
       login(user)
       redirect_to back_or_default(my_root_path), notice: 'Signed in!'

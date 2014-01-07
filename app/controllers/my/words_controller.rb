@@ -23,7 +23,8 @@ class My::WordsController < My::CommonController
       current_user.words << @word
       redirect_to my_words_path, notice: 'Word successfully created.'
     else
-      redirect_to my_words_path, alert: 'Word not created successfully.'
+      flash.now[:error] = 'Word not created successfully.'
+      render :new
     end
   end
 
@@ -47,8 +48,6 @@ class My::WordsController < My::CommonController
 
     if @word.destroy
       flash[:notice] = 'The word was deleted successfully.'
-    else
-      flash[:error] = 'The word was not deleted successfully.'
     end
 
     redirect_to back_or_default(my_words_path)
