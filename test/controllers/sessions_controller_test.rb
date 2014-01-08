@@ -35,7 +35,6 @@ class SessionsControllerTest < ActionController::TestCase
 
     post :create, { email: @user.email, password: 'qweqwe' }
     assert_redirected_to my_root_path
-    assert flash[:error].present?
   end
 
   test "it logouts a user" do
