@@ -2,8 +2,18 @@
   = hidden_referrer_input_tag
 
   = hidden_field_tag :type, params[:type]
+  = f.label :foreign_form
   = f.text_field :foreign_form, placeholder: 'Foreign form'
+  br
+  = f.label :known_form
   = f.text_field :known_form, placeholder: 'Known form'
+  br
+
+  - word.class.specifics.each do |specific|
+    = f.label specific
+    = f.text_field specific, placeholder: specific
+    br
+
   = f.submit 'Save'
 
 - if params[referrer_param].present?

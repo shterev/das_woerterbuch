@@ -31,7 +31,37 @@ class WordOperationsTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'check that each word type renders the apropriate specific fields' do
+    Word.inheritors.each do |word_type|
+      click_link(word_type)
+      assert_page_with_title('Words')
+
+      click_link("New #{word_type}")
+      assert_page_with_title('New word')
+
+      assert page.has_selector?('input#word_foreign_form')
+      assert page.has_selector?('input#word_known_form')
+
+      eval("#{word_type}.specifics").each do |specific|
+        assert page.has_selector?("input#word_#{specific}"), "Expected form to have a text field for the `#{specific}` specific of the word type `#{word_type}` ."
+      end
+
+      click_link('Cancel')
+    end
+  end
+
   test 'cancel word creation' do
+    Word.inheritors.each do |word_type|
+      click_link(word_type)
+      assert_page_with_title('Words')
+
+      click_link("New #{word_type}")
+      assert_page_with_title('New word')
+
+      click_link('Cancel')
+
+      assert_page_with_title('Words')
+    end
   end
 
   test 'edit word' do

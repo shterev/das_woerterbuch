@@ -13,7 +13,7 @@ class My::WordsController < My::CommonController
   end
 
   def new
-    @word = Word.new
+    @word = Word.new(type: params[:type])
   end
 
   def create
