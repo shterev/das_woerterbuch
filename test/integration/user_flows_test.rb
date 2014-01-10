@@ -6,7 +6,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test 'register new user' do
     visit(root_path)
-    assert_page_with_title('Landing page')
 
     click_link('Sign up')
     assert_page_with_title('Sign up')
@@ -21,7 +20,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test 'login a user' do
     visit(root_path)
-    assert_page_with_title('Landing page')
 
     click_link('Sign in')
     assert_page_with_title('Sign in')
