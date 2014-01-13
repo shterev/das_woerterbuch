@@ -1,0 +1,13 @@
+.button {
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  font-weight: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+
+  @include input-default;
+}
