@@ -1,2 +1,17 @@
+/* Mixins */
+
+/* Normalize.css */
 @import 'normalize';
+
+/* Das Wörterbuch base style */
 @import 'base';
+
+/* Layout */
+@import 'layout/application';
+
+
+/* ********** BEM ********** */
+
+/* BEM container */
+@import 'bem/container/container';
+@import 'bem/container/container_centered';
