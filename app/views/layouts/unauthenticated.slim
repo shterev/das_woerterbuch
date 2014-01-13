@@ -1,0 +1,21 @@
+doctype html
+html class="no-js"
+  head
+    title Das Wörterbuch
+    = stylesheet_link_tag    "unauthenticated", media: "all"
+    = javascript_include_tag "unauthenticated"
+    = csrf_meta_tags
+  body
+    header class="l-header"
+      div class="container container_centered"
+        h1 class="logo logo_large" Das Wörterbuch
+        div Online German vocabulary book.
+
+    div class="l-body container container_centered"
+      - flash.each do |name, msg|
+        = content_tag :div, msg
+      == yield
+
+    footer class="l-footer"
+      div class="container container_centered"
+        Das Wörterbuch / 2014
