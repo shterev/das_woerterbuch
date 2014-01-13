@@ -6,8 +6,8 @@ html class="no-js"
     = javascript_include_tag "unauthenticated"
     = csrf_meta_tags
   body
-    header
-      div class="l-footer container container_centered"
+    header class="l-header"
+      div class="container container_centered"
         span class="logo logo_large" Das Wörterbuch
         div Online German vocabulary book.
 
@@ -19,6 +19,6 @@ html class="no-js"
     div class="l-body container container_centered"
       == yield
 
-    footer
-      div class="l-footer container container_centered"
+    footer class="l-footer"
+      div class="container container_centered"
         | Das Wörterbuch / 2014

@@ -1,6 +1,8 @@
 .l-header {
   text-align: center;
-  outline: 1px dotted red;
+  > .container {
+    outline: 1px dotted red;
+  }
 }
 
 .l-messages {
@@ -14,5 +16,7 @@
 
 .l-footer {
   text-align: center;
-  outline: 1px dotted red;
+  > .container {
+    outline: 1px dotted red;
+  }
 }

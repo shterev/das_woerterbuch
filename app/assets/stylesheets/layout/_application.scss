@@ -1,5 +1,7 @@
 .l-header {
-  outline: 1px dotted red;
+  > .container {
+    outline: 1px dotted red;
+  }
 }
 
 .l-messages {
@@ -11,5 +13,7 @@
 }
 
 .l-footer {
-  outline: 1px dotted red;
+  > .container {
+    outline: 1px dotted red;
+  }
 }
