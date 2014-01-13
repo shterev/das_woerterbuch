@@ -16,7 +16,7 @@ nav
     - @words.each do |word|
       li
         = link_to word.foreign_form, my_word_path(word, referrer_param => current_path)
-        = link_to 'Edit', edit_my_word_path(word, referrer_param => current_path)
-        = button_to 'Delete', my_word_path(word, referrer_param => current_path), method: :delete, data: { confirm: "Are you sure?" }
+        = link_to 'Edit', edit_my_word_path(word, referrer_param => current_path), class: 'button button_small'
+        = button_to 'Delete', my_word_path(word, referrer_param => current_path), method: :delete, data: { confirm: "Are you sure?" }, class: 'button button_danger button_small'
 - else
   p Empty

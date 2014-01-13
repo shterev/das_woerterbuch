@@ -14,7 +14,7 @@
 
 @mixin input-small {
   line-height: 1;
-  padding: 1px 5px;
+  padding: 3px 5px;
   font-size: 12px;
   @include border-radius(3px);
 }

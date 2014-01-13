@@ -14,7 +14,7 @@
     = f.text_field specific, placeholder: specific
     br
 
-  = f.submit 'Save'
+  = f.submit 'Save', class: 'button button_primary'
 
 - if params[referrer_param].present?
-  = link_to 'Cancel', back_or_default(my_words_path)
+  = link_to 'Cancel', back_or_default(my_words_path), class: 'button'

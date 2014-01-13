@@ -8,6 +8,8 @@
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
+  background-color: $white;
+  border: 1px solid $gray;
 
   @include input-default;
 }
