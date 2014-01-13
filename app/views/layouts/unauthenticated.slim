@@ -6,16 +6,18 @@ html class="no-js"
     = javascript_include_tag "unauthenticated"
     = csrf_meta_tags
   body
-    header class="l-header"
-      div class="container container_centered"
+    header
+      div class="l-footer container container_centered"
         span class="logo logo_large" Das Wörterbuch
         div Online German vocabulary book.
 
-    div class="l-body container container_centered"
+    div class="l-messages container container_centered"
       - flash.each do |name, msg|
         = content_tag :div, msg
+
+    div class="l-body container container_centered"
       == yield
 
-    footer class="l-footer"
-      div class="container container_centered"
+    footer
+      div class="l-footer container container_centered"
         Das Wörterbuch / 2014

@@ -7,24 +7,32 @@ html class="no-js"
     = csrf_meta_tags
   body
     header
-      - if logged_in?
+      div class="l-header container container_centered"
+        - if logged_in?
+          nav
+            ul
+              li
+                = link_to('Words', my_words_path)
         nav
           ul
-            li
-              = link_to('Words', my_words_path)
-      nav
-        ul
-          - if logged_in?
-            li
-              = current_user.email
-            li 
-              = button_to('Sign out', session_path, :method => :delete)
-          - else
-            li
-              = link_to('Sign in', new_session_path)
-            li
-              = link_to('Sign up', new_user_path)
+            - if logged_in?
+              li
+                = current_user.email
+              li
+                = button_to('Sign out', session_path, :method => :delete)
+            - else
+              li
+                = link_to('Sign in', new_session_path)
+              li
+                = link_to('Sign up', new_user_path)
 
-    - flash.each do |name, msg|
-      = content_tag :div, msg
-    == yield
+    div class="l-messages container container_centered"
+      - flash.each do |name, msg|
+        = content_tag :div, msg
+
+    div class="l-body container container_centered"
+      == yield
+
+    footer
+      div class="l-footer container container_centered"
+        Das Wörterbuch / 2014
