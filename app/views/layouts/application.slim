@@ -26,9 +26,10 @@ html class="no-js"
               li
                 = link_to('Sign up', new_user_path)
 
-    div class="l-messages container container_centered"
-      - flash.each do |name, msg|
-        = content_tag :div, msg
+    - if flash.any?
+      div class="l-messages container container_centered"
+        - flash.each do |name, msg|
+          = content_tag :div, msg
 
     div class="l-body container container_centered"
       == yield
