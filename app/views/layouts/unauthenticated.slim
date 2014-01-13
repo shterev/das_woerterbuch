@@ -8,7 +8,7 @@ html class="no-js"
   body
     header class="l-header"
       div class="container container_centered"
-        span class="logo logo_large logo_dark" Das Wörterbuch
+        = link_to('Das Wörterbuch', root_path, class: 'logo logo_large logo_dark')
         div Online German vocabulary book.
 
     - if flash.any?
