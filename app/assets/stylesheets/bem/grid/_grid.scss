@@ -10,7 +10,7 @@
 @for $i from 1 through 10 {
   .grid_#{$i} {
     width: ($i * 10%);
-    padding: 0 1%;
+    padding: 0 10px;
     float: left;
   }
 }
