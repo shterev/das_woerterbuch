@@ -19,7 +19,7 @@ html class="no-js"
             li
               = current_user.email
             li
-              = button_to('Sign out', session_path, :method => :delete, class: 'button button_danger')
+              = button_to('Sign out', session_path, :method => :delete, form_class: 'button button_danger')
 
     - if flash.any?
       div class="l-messages container container_centered"
