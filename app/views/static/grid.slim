@@ -183,8 +183,16 @@ div class="grid"
   div class="grid grid_2"
     | X
 
-div class="grid"
-  div class="grid grid_5"
-    | X
-  div class="grid grid_5"
-    | X
+= content_tag(:div, class: bem_class_for(:grid, [])) do
+  = content_tag(:div, class: bem_class_for(:grid, ['5', 'alpha', 'omega'])) do
+    = content_tag(:div, 'X', class: bem_class_for(:grid, ['3', 'alpha', 'omega']))
+      = content_tag(:div, 'A', class: bem_class_for(:grid, ['5']))
+      = content_tag(:div, 'A', class: bem_class_for(:grid, ['5']))
+    = content_tag(:div, 'X', class: bem_class_for(:grid, ['1']))
+    = content_tag(:div, 'X', class: bem_class_for(:grid, ['3']))
+    = content_tag(:div, 'X', class: bem_class_for(:grid, ['3']))
+  = content_tag(:div, 'X', class: bem_class_for(:grid, ['5']))
+
+= content_tag(:div, class: bem_class_for(:grid, [])) do
+  = content_tag(:div, 'X', class: bem_class_for(:grid, ['3', 'push_3']))
+  = content_tag(:div, 'X', class: bem_class_for(:grid, ['3', 'push_1']))

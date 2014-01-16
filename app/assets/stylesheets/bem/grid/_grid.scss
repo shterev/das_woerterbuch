@@ -14,3 +14,17 @@
     float: left;
   }
 }
+
+@for $i from 1 through 9 {
+  .grid_push_#{$i} {
+    margin-left: ($i * 10%);
+  }
+}
+
+.grid_alpha {
+  padding-left: 0;
+}
+
+.grid_omega {
+  padding-right: 0;
+}
