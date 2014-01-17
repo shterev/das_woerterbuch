@@ -1,9 +1,13 @@
+@import "mixins/clearfix";
+
 .grid {
   position: relative;
   display: block;
   width: 100%;
   box-sizing: border-box;
   outline: 1px dotted red;
+
+  @include clrfix;
 }
 
 /* Dynamic modifiers */
