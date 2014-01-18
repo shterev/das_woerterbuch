@@ -21,5 +21,20 @@
     color: $black;
   }
 
+  &.button_hover, &.button_focus,
+  &:hover, &:focus {
+    background-color: red;
+  }
+
+  &.button_active,
+  &:active {
+    background-color: blue;
+  }
+
+  &.button_disabled,
+  &[disabled] {
+    background-color: yellow;
+  }
+
   @include input-default;
 }
