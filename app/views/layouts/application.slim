@@ -13,13 +13,7 @@ html class="no-js"
             = link_to('Logo', root_path, class: 'logo logo_small logo_light')
 
           = content_tag(:nav, class: "l-main-navigation #{bem_class_for(:grid, [5])}")
-            = content_tag(:ul, class: "#{bem_class_for(:navigation, ['main'])} grid")
-              = content_tag(:li, class: "#{bem_class_for(:grid, [2, 'alpha', 'omega'])} navigation__item navigation_main__item")
-                = link_to('Words', '#', class: bem_class_for(:button, ['main-navigation', 'active']))
-              = content_tag(:li, class: "#{bem_class_for(:grid, [2, 'alpha', 'omega'])} navigation__item navigation_main__item")
-                = link_to('Words', '#', class: bem_class_for(:button, ['main-navigation']))
-              = content_tag(:li, class: "#{bem_class_for(:grid, [2, 'alpha', 'omega'])} navigation__item navigation_main__item")
-                = link_to('Words', '#', class: bem_class_for(:button, ['main-navigation']))
+            = render('layouts/partials/main_navigation')
 
           = content_tag(:nav, class: "l-profile-navigation #{bem_class_for(:grid, [2, 'omega'])}")
             | PROFILE NAVIGATION
