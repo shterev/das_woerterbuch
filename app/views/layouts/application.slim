@@ -7,28 +7,31 @@ html class="no-js"
     = csrf_meta_tags
   body
     header class="l-header"
-      div class="container container_centered"
-        = link_to('Das Wörterbuch', root_path, class: 'logo logo_small logo_light')
-        - if logged_in?
-          nav
-            ul
-              li
-                = link_to('Words', my_words_path)
-        nav
-          ul
-            li
-              = current_user.email
-            li
-              = button_to('Sign out', session_path, :method => :delete, form_class: 'button button_danger')
+      = content_tag(:div, class: bem_class_for(:container, ['centered']))
+        = content_tag(:div, class: bem_class_for(:grid))
+          = content_tag(:div, class: "l-logo #{bem_class_for(:grid, [3, 'alpha'])}")
+            = link_to('Logo', root_path, class: 'logo logo_small logo_light')
+
+          = content_tag(:nav, class: "l-main-navigation #{bem_class_for(:grid, [5])}")
+            = content_tag(:ul, class: "#{bem_class_for(:navigation, ['main'])} grid")
+              = content_tag(:li, class: "#{bem_class_for(:grid, [2, 'alpha', 'omega'])} navigation__item navigation_main__item")
+                = link_to('Words', '#', class: bem_class_for(:button, ['main-navigation', 'active']))
+              = content_tag(:li, class: "#{bem_class_for(:grid, [2, 'alpha', 'omega'])} navigation__item navigation_main__item")
+                = link_to('Words', '#', class: bem_class_for(:button, ['main-navigation']))
+              = content_tag(:li, class: "#{bem_class_for(:grid, [2, 'alpha', 'omega'])} navigation__item navigation_main__item")
+                = link_to('Words', '#', class: bem_class_for(:button, ['main-navigation']))
+
+          = content_tag(:nav, class: "l-profile-navigation #{bem_class_for(:grid, [2, 'omega'])}")
+            | PROFILE NAVIGATION
 
     - if flash.any?
-      div class="l-messages container container_centered"
+      = content_tag(:div, class: "l-messages #{bem_class_for(:container, ['centered'])}")
         - flash.each do |name, msg|
           = content_tag :div, msg
 
-    div class="l-body container container_centered"
+    = content_tag(:div, class: "l-body #{bem_class_for(:container, ['centered'])}")
       == yield
 
     footer class="l-footer"
-      div class="container container_centered"
+      = content_tag(:div, class: bem_class_for(:container, ['centered']))
         | Das Wörterbuch / 2014

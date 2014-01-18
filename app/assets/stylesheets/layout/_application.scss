@@ -1,21 +1,38 @@
 .l-header {
+  color: $white;
   background-color: $black;
+}
 
-  > .container {
-    outline: 1px dotted red;
+.l-logo {
+  height: 55px;
+
+  .logo {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
   }
 }
 
+.l-main-navigation {
+  height: 55px;
+
+  > .navigation {
+    margin-top: 10px;
+  }
+}
+
+.l-profile-navigation {
+  height: 55px;
+}
+
 .l-messages {
-  outline: 1px dotted red;
 }
 
 .l-body {
-  outline: 1px dotted red;
 }
 
 .l-footer {
   > .container {
-    outline: 1px dotted red;
+    text-align: center;
   }
 }

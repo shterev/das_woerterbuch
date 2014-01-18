@@ -16,23 +16,8 @@
 
 
 /* ********** BEM ********** */
-
-/* BEM button */
-@import "bem/button/button";
-@import "bem/button/button_large";
-@import "bem/button/button_small";
-@import "bem/button/button_primary";
-@import "bem/button/button_danger";
-@import "bem/button/button_block";
-
-/* BEM container */
-@import "bem/container/container";
-@import "bem/container/container_centered";
-
-/* BEM grid */
-@import "bem/grid/grid";
-
-/* BEM logo */
-@import "bem/logo/logo";
-@import "bem/logo/logo_small";
-@import "bem/logo/logo_light";
+@import "bem/button/*";
+@import "bem/container/*";
+@import "bem/grid/*";
+@import "bem/logo/*";
+@import "bem/navigation/*";
