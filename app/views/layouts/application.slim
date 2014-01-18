@@ -9,13 +9,13 @@ html class="no-js"
     header class="l-header"
       = content_tag(:div, class: bem_class_for(:container, ['centered']))
         = content_tag(:div, class: bem_class_for(:grid))
-          = content_tag(:div, class: "l-logo #{bem_class_for(:grid, [3, 'alpha'])}")
+          = content_tag(:div, class: "l-logo #{bem_class_for(:grid, [3])}")
             = link_to('Das Wörterbuch', root_path, class: 'logo logo_small logo_light')
 
           = content_tag(:nav, class: "l-main-navigation #{bem_class_for(:grid, [5])}")
             = render('layouts/partials/main_navigation')
 
-          = content_tag(:nav, class: "l-profile-navigation #{bem_class_for(:grid, [2, 'omega'])}")
+          = content_tag(:nav, class: "l-profile-navigation #{bem_class_for(:grid, [2])}")
             | PROFILE NAVIGATION
 
     - if flash.any?

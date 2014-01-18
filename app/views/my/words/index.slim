@@ -1,22 +1,24 @@
-h1 Words
+= content_tag(:div, class: bem_class_for(:grid))
+  = content_tag(:h1, 'Words', class: bem_class_for(:grid, ['4']))
 
-nav
-  ul
-    li
+= content_tag(:nav, class: bem_class_for(:grid))
+  = content_tag(:ul)
+    = content_tag(:li)
       = link_to('All', my_words_path)
     - Word.inheritors.each do |word_type|
-      li
+      = content_tag(:li)
         = link_to(word_type, my_words_path(type: word_type))
 
 - if params[:type].present?
   = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path))
 
-- if @words.any?
-  ul
-    - @words.each do |word|
-      li
-        = link_to word.foreign_form, my_word_path(word, referrer_param => current_path)
-        = link_to 'Edit', edit_my_word_path(word, referrer_param => current_path), class: 'button button_small'
-        = button_to 'Delete', my_word_path(word, referrer_param => current_path), method: :delete, data: { confirm: "Are you sure?" }, form_class: 'button button_danger button_small'
-- else
-  p Empty
+= content_tag(:div, class: bem_class_for(:grid))
+  - if @words.any?
+    = content_tag(:ul)
+      - @words.each do |word|
+        li
+          = link_to word.foreign_form, my_word_path(word, referrer_param => current_path)
+          = link_to 'Edit', edit_my_word_path(word, referrer_param => current_path), class: 'button button_small'
+          = button_to 'Delete', my_word_path(word, referrer_param => current_path), method: :delete, data: { confirm: "Are you sure?" }, form_class: 'button button_danger button_small'
+  - else
+    p Empty
