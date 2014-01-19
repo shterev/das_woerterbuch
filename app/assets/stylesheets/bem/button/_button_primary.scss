@@ -1,11 +1,23 @@
 .button_primary {
-  background-color: $blue;
-  border-color: $blue;
-  color: $white;
+  background-color: $button_primary_background;
+  border-color: $button_primary_border;
+  color: $button_primary_text;
 
   input {
-    background-color: $blue;
-    border-color: $blue;
-    color: $white;
+    background-color: $button_primary_background;
+    border-color: $button_primary_border;
+    color: $button_primary_text;
+  }
+
+  &.button_hover, &.button_focus,
+  &:hover, &:focus {
+    background-color: $button_primary_hover_background;
+  }
+
+  &.button_disabled,
+  &[disabled] {
+    background-color: $button_primary_disabled_background;
+    border: 1px solid $button_primary_disabled_border;
+    color: $button_primary_disabled_text;
   }
 }

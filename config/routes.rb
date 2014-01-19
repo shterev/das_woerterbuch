@@ -10,4 +10,9 @@ DasWoerterbuch::Application.routes.draw do
 
   get ":action" => "static#:action"
   root to: "static#landingpage"
+
+  scope '/styleguide' do
+    get ":action" => "styleguides#:action"
+  end
+
 end

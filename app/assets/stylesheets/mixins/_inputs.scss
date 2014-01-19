@@ -18,3 +18,10 @@
   font-size: 12px;
   @include border-radius(6px);
 }
+
+@mixin input-block {
+  width: 100%;
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+}
