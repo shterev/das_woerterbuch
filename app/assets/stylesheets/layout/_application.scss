@@ -23,6 +23,11 @@
 
 .l-profile-navigation {
   height: 55px;
+
+  > .navigation {
+    float: right;
+    margin-top: 13px;
+  }
 }
 
 .l-messages {

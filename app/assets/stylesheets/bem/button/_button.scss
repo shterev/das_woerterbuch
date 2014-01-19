@@ -17,13 +17,15 @@
     margin: 0;
     border: none;
     background: none;
-    background-color: $button_default_border;
+    border: none;
     color: $button_default_text;
   }
 
   &.button_hover, &.button_focus,
   &:hover, &:focus {
     background-color: $button_default_hover_background;
+    border: 1px solid $button_default_hover_border;
+    color: $button_default_hover_text;
   }
 
   &.button_active,

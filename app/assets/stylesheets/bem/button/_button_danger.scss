@@ -4,14 +4,14 @@
   color: $button_danger_text;
 
   input {
-    background-color: $button_danger_background;
-    border-color: $button_danger_border;
     color: $button_danger_text;
   }
 
   &.button_hover, &.button_focus,
   &:hover, &:focus {
     background-color: $button_danger_hover_background;
+    border-color: $button_danger_hover_border;
+    color: $button_danger_hover_text;
   }
 
   &.button_disabled,
