@@ -16,7 +16,7 @@ html class="no-js"
             = render('layouts/partials/main_navigation')
 
           = content_tag(:nav, class: "l-profile-navigation #{bem_class_for(:grid, [2])}")
-            | PROFILE NAVIGATION
+            = render('layouts/partials/profile_navigation')
 
     - if flash.any?
       = content_tag(:div, class: "l-messages #{bem_class_for(:container, ['centered'])}")
