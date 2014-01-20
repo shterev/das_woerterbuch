@@ -12,4 +12,9 @@ class StyleguidesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "renders page_navigation page" do
+    get :page_navigation
+    assert_response :success
+  end
+
 end

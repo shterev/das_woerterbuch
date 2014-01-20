@@ -1,13 +1,13 @@
 = content_tag(:div, class: bem_class_for(:grid))
-  = content_tag(:h1, 'Words', class: bem_class_for(:grid, ['4']))
+  = content_tag(:h1, 'Words', class: bem_class_for(:grid, [2]))
 
-= content_tag(:nav, class: bem_class_for(:grid))
-  = content_tag(:ul)
-    = content_tag(:li)
-      = link_to('All', my_words_path)
-    - Word.inheritors.each do |word_type|
-      = content_tag(:li)
-        = link_to(word_type, my_words_path(type: word_type))
+  = content_tag(:nav, class: bem_class_for(:grid, [8]))
+    = content_tag(:ul, class: bem_class_for(:navigation, ['page']))
+      = content_tag(:li, class: 'navigation__item')
+        = link_to('All', my_words_path, class: 'navigation__link navigation_page__link')
+      - Word.inheritors.each do |word_type|
+        = content_tag(:li, class: 'navigation__item')
+          = link_to(word_type, my_words_path(type: word_type), class: 'navigation__link navigation_page__link')
 
 - if params[:type].present?
   = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path))
