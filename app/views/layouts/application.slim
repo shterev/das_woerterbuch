@@ -24,6 +24,8 @@ html class="no-js"
           = content_tag :div, msg
 
     = content_tag(:div, class: "l-body #{bem_class_for(:container, ['centered'])}")
+      = content_tag(:div, class: "#{bem_class_for(:header, ['application', 'page'])} #{bem_class_for(:grid)}")
+        == yield(:page_header)
       == yield
 
     footer class="l-footer"

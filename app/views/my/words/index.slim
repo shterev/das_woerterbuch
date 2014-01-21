@@ -1,5 +1,5 @@
-= content_tag(:div, class: bem_class_for(:grid))
-  = content_tag(:h1, 'Words', class: bem_class_for(:grid, [2]))
+= content_for(:page_header)
+  = content_tag(:h1, 'Words', class: "header_page__title #{bem_class_for(:grid, [2])}")
 
   = content_tag(:nav, class: bem_class_for(:grid, [8]))
     = content_tag(:ul, class: bem_class_for(:navigation, ['page']))
