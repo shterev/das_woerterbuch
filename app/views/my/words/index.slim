@@ -11,7 +11,8 @@
 
 - if params[:type].present?
   = content_tag(:div, class: bem_class_for(:grid))
-    = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:grid, [10]))
+    = content_tag(:div, class: bem_class_for(:grid, [10]))
+      = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:button, ['primary']))
 
 = content_tag(:div, class: bem_class_for(:grid))
   - if @words.any?
