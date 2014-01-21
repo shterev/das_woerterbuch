@@ -3,11 +3,11 @@
 
   = content_tag(:nav, class: bem_class_for(:grid, [8]))
     = content_tag(:ul, class: bem_class_for(:navigation, ['page']))
-      = content_tag(:li, class: 'navigation__item')
-        = link_to('All', my_words_path, class: 'navigation__link navigation_page__link')
       - Word.inheritors.each do |word_type|
-        = content_tag(:li, class: 'navigation__item')
+        = content_tag(:li, class: 'navigation__item navigation_page__item')
           = link_to(word_type, my_words_path(type: word_type), class: 'navigation__link navigation_page__link')
+      = content_tag(:li, class: 'navigation__item navigation_page__item')
+        = link_to('All', my_words_path, class: 'navigation__link navigation_page__link')
 
 - if params[:type].present?
   = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path))
