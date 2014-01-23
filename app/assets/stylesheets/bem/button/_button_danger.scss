@@ -3,10 +3,6 @@
   border-color: $button_danger_border;
   color: $button_danger_text;
 
-  input {
-    color: $button_danger_text;
-  }
-
   &.button_hover, &.button_focus,
   &:hover, &:focus {
     background-color: $button_danger_hover_background;

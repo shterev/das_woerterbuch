@@ -3,10 +3,6 @@
   border-color: $button_primary_border;
   color: $button_primary_text;
 
-  input {
-    color: $button_primary_text;
-  }
-
   &.button_hover, &.button_focus,
   &:hover, &:focus {
     background-color: $button_primary_hover_background;
