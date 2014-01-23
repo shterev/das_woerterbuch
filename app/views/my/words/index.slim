@@ -21,6 +21,6 @@
         li
           = link_to word.foreign_form, my_word_path(word, referrer_param => current_path)
           = link_to 'Edit', edit_my_word_path(word, referrer_param => current_path), class: 'button button_small'
-          = button_to 'Delete', {url: my_word_path(word, referrer_param => current_path), method: :delete, data: { confirm: "Are you sure?" }}, {class: bem_class_for(:button, ['danger', 'small'])}
+          = button_to 'Delete', my_word_path(word, referrer_param => current_path), { method: :delete, data: { confirm: "Are you sure?" }, class: bem_class_for(:button, ['danger', 'small'])}
   - else
     p Empty
