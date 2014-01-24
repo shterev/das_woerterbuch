@@ -7,7 +7,7 @@
   color: $white;
   background: none;
   border: none;
-  @include border-radius(0);
+  @include border-bottom-radius(0);
 
   &.button_hover, &.button_focus,
   &:hover, &:focus {
