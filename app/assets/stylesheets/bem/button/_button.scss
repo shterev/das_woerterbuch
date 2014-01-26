@@ -11,6 +11,7 @@
   background: $button_default_background;
   border: 1px solid $button_default_border;
   color: $button_default_text;
+  box-sizing: border-box;
 
   &.button_hover, &.button_focus,
   &:hover, &:focus {
