@@ -8,7 +8,7 @@
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
-  background: none;
+  background: $button_default_background;
   border: 1px solid $button_default_border;
   color: $button_default_text;
 
@@ -26,8 +26,8 @@
 
   &.button_disabled,
   &[disabled] {
-    background: none;
-    border: 1px solid $button_default_border;
+    background: $button_default_disabled_background;
+    border: 1px solid $button_default_disabled_border;
     color: $button_default_disabled_text;
     cursor: default;
     box-shadow: none;
