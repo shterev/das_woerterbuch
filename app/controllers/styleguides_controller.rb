@@ -8,4 +8,7 @@ class StyleguidesController < ApplicationController
   def button
   end
 
+  def colors
+  end
+
 end
