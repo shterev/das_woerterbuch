@@ -12,9 +12,10 @@ html class="no-js"
         div Interactive German vocabulary book.
 
     - if flash.any?
-      div class="l-messages container container_centered"
-        - flash.each do |name, msg|
-          = content_tag :div, msg
+      = content_tag(:div, class: "l-messages container container_centered grid")
+        = success_notification "Success", flash[:notice] if flash[:notice].present?
+        = warning_notification "Warning", flash[:alert]  if flash[:alert].present?
+        = danger_notification  "Error",   flash[:error]  if flash[:error].present?
 
     div class="l-body container container_centered"
       == yield

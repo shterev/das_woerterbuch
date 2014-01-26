@@ -19,9 +19,10 @@ html class="no-js"
             = render('layouts/partials/navigation/profile')
 
     - if flash.any?
-      = content_tag(:div, class: "l-messages #{bem_class_for(:container, ['centered'])}")
-        - flash.each do |name, msg|
-          = content_tag :div, msg
+      = content_tag(:div, class: "l-messages container container_centered grid")
+        = success_notification "Success", flash[:notice] if flash[:notice].present?
+        = warning_notification "Warning", flash[:alert]  if flash[:alert].present?
+        = danger_notification  "Error",   flash[:error]  if flash[:error].present?
 
     = content_tag(:div, class: "l-body #{bem_class_for(:container, ['centered'])}")
       = content_tag(:div, class: "#{bem_class_for(:header, ['application', 'page'])} #{bem_class_for(:grid)}")

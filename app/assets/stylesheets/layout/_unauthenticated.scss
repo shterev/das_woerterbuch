@@ -1,23 +1,19 @@
 .l-header {
   text-align: center;
   > .container {
-    outline: 1px dotted red;
   }
 }
 
 .l-messages {
-  text-align: center;
-  outline: 1px dotted red;
+  padding-top: 10px !important;
 }
 
 .l-body {
   text-align: center; 
-  outline: 1px dotted red;
 }
 
 .l-footer {
   text-align: center;
   > .container {
-    outline: 1px dotted red;
   }
 }
