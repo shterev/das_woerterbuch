@@ -8,6 +8,9 @@ class StyleguidesController < ApplicationController
   def button
   end
 
+  def notification
+  end
+
   def colors
   end
 
