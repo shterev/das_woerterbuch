@@ -2,9 +2,41 @@
 - (1..10).each do |i|
   - words << Verb.new({:id => i, :foreign_form => "Foreign-#{i}", :known_form => "Known-#{i}"})
 
-= content_tag(:div, class: bem_class_for(:grid, [10]))
-  = render partial: 'layouts/partials/word_list', locals: { words: words, new_word_type: Verb }
-  br
-  hr
-  br
-  = render partial: 'layouts/partials/word_list', locals: { words: [], new_word_type: Verb }
+= content_tag(:div, class: bem_class_for(:grid))
+  = content_tag(:div, class: bem_class_for(:grid, [10]))
+    - if words.any?
+      = content_tag(:div, class: bem_class_for(:grid, [10]))
+        = content_tag(:div, class: 'word-list-information')
+          = "You have #{words.count} word(s) in this list."
+          = link_to("New #{Verb}", new_my_word_path(type: Verb, referrer_param => current_path), class: bem_class_for(:button, ['primary'])) if Verb
+
+      = content_tag(:div, class: bem_class_for(:grid, [10]))
+        = render partial: 'layouts/partials/word_list', locals: { words: words, new_word_type: Verb }
+
+    - else
+      = content_tag(:div, class: bem_class_for(:grid, [10]))
+        = content_tag(:div, class: 'word-list-information word-list-information_empty')
+          | There are no words in this list.
+          = link_to("New #{Verb}", new_my_word_path(type: Verb, referrer_param => current_path), class: bem_class_for(:button, ['primary']))
+
+br
+hr
+br
+
+- words = []
+
+= content_tag(:div, class: bem_class_for(:grid))
+  = content_tag(:div, class: bem_class_for(:grid, [10]))
+    - if words.any?
+      = content_tag(:div, class: bem_class_for(:grid, [10]))
+        = content_tag(:div, class: 'word-list-information')
+          = "You have #{words.count} word(s) in this list."
+          = link_to("New #{Verb}", new_my_word_path(type: Verb, referrer_param => current_path), class: bem_class_for(:button, ['primary'])) if Verb
+
+      = content_tag(:div, class: bem_class_for(:grid, [10]))
+        = render partial: 'layouts/partials/word_list', locals: { words: words, new_word_type: Verb }
+    - else
+      = content_tag(:div, class: bem_class_for(:grid, [10]))
+        = content_tag(:div, class: 'word-list-information word-list-information_empty')
+          | There are no words in this list.
+          = link_to("New #{Verb}", new_my_word_path(type: Verb, referrer_param => current_path), class: bem_class_for(:button, ['primary']))
