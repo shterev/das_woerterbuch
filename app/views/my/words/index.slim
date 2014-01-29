@@ -9,24 +9,16 @@
       = content_tag(:li, class: 'navigation__item navigation_page__item')
         = link_to('All', my_words_path, class: 'navigation__link navigation_page__link')
 
-- if params[:type].present?
-  = content_tag(:div, class: bem_class_for(:grid))
-    = content_tag(:div, class: bem_class_for(:grid, [10]))
-      = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:button, ['primary']))
+- if @words.any?
+  = content_tag(:div, class: bem_class_for(:grid, [10]))
+    = content_tag(:div, class: 'word-list-information')
+      = "You have #{@words.count} word(s) in this list."
+      = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:button, ['primary'])) if params[:type]
 
-= content_tag(:div, class: bem_class_for(:grid, [10]))
-  - if @words.any?
-    = content_tag(:table, class: 'word-list')
-      tbody
-        - @words.to_enum.with_index(1).each do |word, index|
-          = content_tag(:tr, class: 'word-list__item')
-            = content_tag(:td, "#{index}.", class: 'word-list__item__index')
-            = content_tag(:td, word.foreign_form, class: 'word-list__item__foreign-form')
-            = content_tag(:td, '-', class: 'word-list__item__separator')
-            = content_tag(:td, word.known_form, class: 'word-list__item__known-form')
-            = content_tag(:td, class: 'word-list__item__actions')
-              = link_to 'Edit', edit_my_word_path(word, referrer_param => current_path), class: 'button button_small'
-              | &nbsp;
-              = button_to 'Delete', my_word_path(word, referrer_param => current_path), { method: :delete, data: { confirm: "Are you sure?" }, class: bem_class_for(:button, ['danger', 'small'])}
-  - else
-    p Empty
+  = content_tag(:div, class: bem_class_for(:grid, [10]))
+    = render partial: 'layouts/partials/word_list', locals: { words: @words, new_word_type: params[:type] }
+- else
+  = content_tag(:div, class: bem_class_for(:grid, [10]))
+    = content_tag(:div, class: 'word-list-information word-list-information_empty')
+      | There are no words in this list.
+      = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:button, ['primary']))

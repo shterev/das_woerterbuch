@@ -1,0 +1,10 @@
+- words = []
+- (1..10).each do |i|
+  - words << Verb.new({:id => i, :foreign_form => "Foreign-#{i}", :known_form => "Known-#{i}"})
+
+= content_tag(:div, class: bem_class_for(:grid, [10]))
+  = render partial: 'layouts/partials/word_list', locals: { words: words, new_word_type: Verb }
+  br
+  hr
+  br
+  = render partial: 'layouts/partials/word_list', locals: { words: [], new_word_type: Verb }
