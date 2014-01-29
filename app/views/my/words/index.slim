@@ -10,15 +10,21 @@
         = link_to('All', my_words_path, class: 'navigation__link navigation_page__link')
 
 - if @words.any?
-  = content_tag(:div, class: bem_class_for(:grid, [10]))
-    = content_tag(:div, class: 'word-list-information')
-      = "You have #{@words.count} word(s) in this list."
-      = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:button, ['primary'])) if params[:type]
+  = content_tag(:div, class: bem_class_for(:grid))
+    = content_tag(:div, class: bem_class_for(:grid, [10]))
+      = content_tag(:div, class: 'word-list-information')
+        = "You have #{@words.count} word(s) in this list."
+        = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:button, ['primary'])) if params[:type]
 
-  = content_tag(:div, class: bem_class_for(:grid, [10]))
-    = render partial: 'layouts/partials/word_list', locals: { words: @words, new_word_type: params[:type] }
+  br
+
+  = content_tag(:div, class: bem_class_for(:grid))
+    = content_tag(:div, class: bem_class_for(:grid, [10]))
+      = render partial: 'layouts/partials/word_list', locals: { words: @words, new_word_type: params[:type] }
+
 - else
-  = content_tag(:div, class: bem_class_for(:grid, [10]))
-    = content_tag(:div, class: 'word-list-information word-list-information_empty')
-      | There are no words in this list.
-      = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:button, ['primary']))
+  = content_tag(:div, class: bem_class_for(:grid))
+    = content_tag(:div, class: bem_class_for(:grid, [10]))
+      = content_tag(:div, class: 'word-list-information word-list-information_empty')
+        | There are no words in this list.
+        = link_to("New #{params[:type]}", new_my_word_path(type: params[:type], referrer_param => current_path), class: bem_class_for(:button, ['primary']))
