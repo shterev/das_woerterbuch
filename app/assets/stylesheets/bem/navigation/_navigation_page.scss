@@ -1,0 +1,7 @@
+@import "mixins/clearfix";
+
+.navigation_page {
+  margin: 0px;
+  padding: 0px;
+  @include clrfix;
+}

@@ -1,0 +1,17 @@
+.navigation_page__link {
+  color: $black;
+  display: block;
+  padding: 6px;
+  margin: 6px 0px 6px 10px;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  @include border-radius(6px);
+
+  &:hover {
+    background-color: $gray_5;
+  }
+
+  &:active {
+  }
+}

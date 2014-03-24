@@ -1,0 +1,19 @@
+.button_danger {
+  background-color: $button_danger_background;
+  border-color: $button_danger_border;
+  color: $button_danger_text;
+
+  &.button_hover, &.button_focus,
+  &:hover, &:focus {
+    background-color: $button_danger_hover_background;
+    border-color: $button_danger_hover_border;
+    color: $button_danger_hover_text;
+  }
+
+  &.button_disabled,
+  &[disabled] {
+    background-color: $button_danger_disabled_background;
+    border-color: $button_danger_disabled_border;
+    color: $button_danger_disabled_text;
+  }
+}

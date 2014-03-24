@@ -1,0 +1,13 @@
+.word-list-information {
+  font-style: italic;
+  text-align: left;
+  color: $gray_2;
+  padding: 20px;
+  background-color: $gray_6;
+  @include border-radius(6px);
+
+  .button {
+    margin-top: -3px;
+    float: right;
+  }
+}

@@ -1,0 +1,15 @@
+.word-list__item {
+  cursor: default;
+
+  .word-list__item__actions .button {
+    visibility: hidden;
+  }
+
+  &:hover {
+    background-color: $gray_6;
+
+    .word-list__item__actions .button {
+      visibility: visible;
+    }
+  }
+}

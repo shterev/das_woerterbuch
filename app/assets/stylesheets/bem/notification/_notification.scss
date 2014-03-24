@@ -1,0 +1,9 @@
+.notification {
+  display: block;
+  text-align: left;
+  padding: 10px 15px;
+  border-width: 1px;
+  border-style: solid;
+  background: none;
+  @include border-radius(4px);
+}

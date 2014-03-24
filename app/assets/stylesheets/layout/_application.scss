@@ -1,0 +1,46 @@
+.l-header {
+  color: $white;
+  background-color: $black;
+}
+
+.l-logo {
+  height: 55px;
+
+  .logo {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+  }
+}
+
+.l-main-navigation {
+  height: 55px;
+
+  > .navigation {
+    margin-top: 10px;
+  }
+}
+
+.l-profile-navigation {
+  height: 55px;
+
+  > .navigation {
+    float: right;
+    margin-top: 13px;
+  }
+}
+
+.l-messages {
+  padding-top: 10px !important;
+}
+
+.l-body {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.l-footer {
+  > .container {
+    text-align: center;
+  }
+}

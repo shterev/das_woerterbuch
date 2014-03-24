@@ -1,0 +1,33 @@
+@import "mixins/clearfix";
+
+.grid {
+  position: relative;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include clrfix;
+}
+
+/* Dynamic modifiers */
+@for $i from 1 through 10 {
+  .grid_#{$i} {
+    width: ($i * 10%);
+    padding: 0 10px;
+    float: left;
+  }
+}
+
+@for $i from 1 through 9 {
+  .grid_push_#{$i} {
+    margin-left: ($i * 10%);
+  }
+}
+
+.grid_alpha {
+  padding-left: 0;
+}
+
+.grid_omega {
+  padding-right: 0;
+}

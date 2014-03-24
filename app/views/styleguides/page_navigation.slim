@@ -1,0 +1,7 @@
+= content_tag(:nav, class: bem_class_for(:grid))
+  = content_tag(:ul, class: bem_class_for(:navigation, ['page']))
+    = content_tag(:li, class: 'navigation__item')
+      = link_to('All', '#', class: 'navigation__link navigation_page__link')
+    - Word.inheritors.each do |word_type|
+      = content_tag(:li, class: 'navigation__item')
+        = link_to(word_type, '#', class: 'navigation__link navigation_page__link')

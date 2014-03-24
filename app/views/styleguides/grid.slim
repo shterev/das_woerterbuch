@@ -1,0 +1,11 @@
+- for i in 0..9 do
+  = content_tag(:div, class: bem_class_for(:grid)) do
+    = content_tag(:div, i, class: bem_class_for(:grid, [i])) unless i.zero?
+    - for j in 0..(9-i) do 
+      = content_tag(:div, 1, class: bem_class_for(:grid, [1]))
+
+br
+
+- for i in 1..10 do
+  = content_tag(:div, class: bem_class_for(:grid)) do
+    = content_tag(:div, i, class: bem_class_for(:grid, [i, "push_#{10 - i}"]))

@@ -1,0 +1,34 @@
+doctype html
+html class="no-js"
+  head
+    title Das Wörterbuch
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+    header class="l-header"
+      = content_tag(:div, class: bem_class_for(:container, ['centered']))
+        = content_tag(:div, class: bem_class_for(:grid))
+          = content_tag(:div, class: "l-logo #{bem_class_for(:grid, [3])}")
+            = link_to('Das Wörterbuch', root_path, class: 'logo logo_small logo_light')
+
+          = content_tag(:nav, class: "l-main-navigation #{bem_class_for(:grid, [5])}")
+            = render('layouts/partials/navigation/main')
+
+          = content_tag(:nav, class: "l-profile-navigation #{bem_class_for(:grid, [2])}")
+            = render('layouts/partials/navigation/profile')
+
+    - if flash.any?
+      = content_tag(:div, class: "l-messages container container_centered grid")
+        = success_notification "Success", flash[:notice] if flash[:notice].present?
+        = warning_notification "Warning", flash[:alert]  if flash[:alert].present?
+        = danger_notification  "Error",   flash[:error]  if flash[:error].present?
+
+    = content_tag(:div, class: "l-body #{bem_class_for(:container, ['centered'])}")
+      = content_tag(:div, class: "#{bem_class_for(:header, ['application', 'page'])} #{bem_class_for(:grid)}")
+        == yield(:page_header)
+      == yield
+
+    footer class="l-footer"
+      = content_tag(:div, class: bem_class_for(:container, ['centered']))
+        | Das Wörterbuch / #{website_availability_period_in_years(2014)}
